@@ -32,9 +32,16 @@ void initSW1(){
 
 void initTimer1(){
     //TODO: Initialize the timer
-    TMR1 = 0;
+    TMR1 = 0;  //set timer counter to 0
     PR1 = twoSeconds;
     IEC0bits.T1IE = 1; // Enable the interrupt
     T1CONbits.TCKPS = 0b11; //prescalar 256
     IFS0bits.T1IF = 0; // Timer 1 interrupt flag down
+}
+
+void initCN(){
+    //Change Interrupt
+    IEC1bits.CNIE = 1;
+    IFS1bits.CNIF = 0;
+    CNEN2bits.CN27IE = 1; // CN Enable on Button
 }

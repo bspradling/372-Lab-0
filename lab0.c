@@ -43,11 +43,7 @@ int main(void)
     initLEDs();
     initTimer1();
     initSW1();
-
-    //Change Interrupt
-    IEC1bits.CNIE = 1;
-    IFS1bits.CNIF = 0;
-    CNEN2bits.CN27IE = 1;
+    initCN();
 
     while(1)
     {
@@ -101,28 +97,28 @@ void _ISR _CNInterrupt(void){
 void turnOnLED(int num){
 
     if (num == 1){ //turning on first LED
-        LATBbits.LATB12 = OFF;
-        LATBbits.LATB13 = OFF;
-        LATBbits.LATB14 = OFF;
-        LATBbits.LATB15 = ON;
+        LED4 = OFF;
+        LED3 = OFF;
+        LED2 = OFF;
+        LED1 = ON;
     }
-    else if (num == 2){
-        LATBbits.LATB12 = OFF;
-        LATBbits.LATB13 = OFF;
-        LATBbits.LATB14 = ON;
-        LATBbits.LATB15 = OFF;
+    else if (num == 2){  //turning on second LED
+        LED4 = OFF;
+        LED3 = OFF;
+        LED2 = ON;
+        LED1 = OFF;
     }
-    else if (num == 3){
-        LATBbits.LATB12 = OFF;
-        LATBbits.LATB13 = ON;
-        LATBbits.LATB14 = OFF;
-        LATBbits.LATB15 = OFF;
+    else if (num == 3){  //turning on third LED
+        LED4 = OFF;
+        LED3 = ON;
+        LED2 = OFF;
+        LED1 = OFF;
     }
-    else if (num == 4){
-        LATBbits.LATB12 = ON;
-        LATBbits.LATB13 = OFF;
-        LATBbits.LATB14 = OFF;
-        LATBbits.LATB15 = OFF;
+    else if (num == 4){  //turning on fourth LED
+        LED4 = ON;
+        LED3 = OFF;
+        LED2 = OFF;
+        LED1 = OFF;
     }
 
 }
